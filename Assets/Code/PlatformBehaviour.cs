@@ -39,4 +39,9 @@ public class PlatformBehaviour : MonoBehaviour
         //     collider.isTrigger = true;
         // }
     }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        PlayerInstance.getInstance().Score += 1;
+    }
 }

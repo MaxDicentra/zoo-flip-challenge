@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Threading;
 using Assets.Code;
 using UnityEngine;
+using UnityEngine.UI;
 using Debug = UnityEngine.Debug;
 
 public class PlayerBehaviour : MonoBehaviour
@@ -15,6 +16,7 @@ public class PlayerBehaviour : MonoBehaviour
     private Animator animator;
     
     [SerializeField] float jumpForceUnit = default;
+    [SerializeField] private Text currentScore = default;
 
 
     private Touch touch;
@@ -26,11 +28,24 @@ public class PlayerBehaviour : MonoBehaviour
     private float direction;
     [SerializeField] int coins = default;
     private int bestScore;
+    [SerializeField] int score = 0;
 
     public int Coins
     {
         get { return coins; }
         set { coins = value; }
+    }
+
+    public int BestScore
+    {
+        get => bestScore;
+        set => bestScore = value;
+    }
+
+    public int Score
+    {
+        get => score;
+        set => score = value;
     }
 
     public bool IsOnPlatform
@@ -50,7 +65,7 @@ public class PlayerBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        currentScore.text = score.ToString();
     }
 
     public void Jump(float touchLength)
