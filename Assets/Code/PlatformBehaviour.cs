@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlatformBehaviour : MonoBehaviour
 {
     [SerializeField] BoxCollider2D collider = default;
+    [SerializeField] private Rigidbody2D rigidBody = default;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,23 +23,24 @@ public class PlatformBehaviour : MonoBehaviour
         }
     }
 
+    void FixedUpdate()
+    {
+        
+    }
+
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.GetComponent<PlayerBehaviour>() != null && other.transform.position.y >= collider.transform.position.y)
         {
             collider.isTrigger = false;
             PlayerInstance.getInstance().IsOnPlatform = true;
+            PlayerInstance.getInstance().IsOnGround = false;
         }
     }
 
     void OnCollisionExit2D(Collision2D other)
     {            
         collider.isTrigger = true;
-
-        // if (other.GetComponent<PlayerBehaviour>() != null)
-        // {
-        //     collider.isTrigger = true;
-        // }
     }
 
     void OnCollisionEnter2D(Collision2D other)

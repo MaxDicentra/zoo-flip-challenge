@@ -22,9 +22,8 @@ public class PlayerBehaviour : MonoBehaviour
     private Touch touch;
    
     private bool isGameStarted = false;
-    private bool isOnPlatform = true;
-    private bool hasReachedPl = false;
-    private bool isOverPl = false;
+    private bool isOnPlatform = false;
+    private bool isOnGround = true;
     private float direction;
     [SerializeField] int coins = default;
     private int bestScore;
@@ -53,7 +52,13 @@ public class PlayerBehaviour : MonoBehaviour
         get { return isOnPlatform;}
         set { isOnPlatform = value;}
     }
-        
+
+    public bool IsOnGround
+    {
+        get => isOnGround;
+        set => isOnGround = value;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,8 +75,9 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void Jump(float touchLength)
     {
-        if (isOnPlatform)
+        if (isOnPlatform || isOnGround)
         {
+            isOnPlatform = false;
             if (touchLength < JUMP_COEFFICIENT)
             {
                 rigidBody.AddForce(new Vector2(0f, jumpForceUnit));
