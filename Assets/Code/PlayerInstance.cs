@@ -9,7 +9,7 @@ namespace Assets.Code
 {
     public class PlayerInstance
     {
-        public static PlayerBehaviour playerInstance;
+        private static PlayerBehaviour playerInstance;
 
         public static PlayerBehaviour getInstance()
         {

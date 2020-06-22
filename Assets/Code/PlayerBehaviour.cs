@@ -20,12 +20,25 @@ public class PlayerBehaviour : MonoBehaviour
     private Touch touch;
    
     private bool isGameStarted = false;
-    private bool isLanded = true;
+    private bool isOnPlatform = true;
     private bool hasReachedPl = false;
     private bool isOverPl = false;
     private float direction;
+    [SerializeField] int coins = default;
+    private int bestScore;
 
+    public int Coins
+    {
+        get { return coins; }
+        set { coins = value; }
+    }
 
+    public bool IsOnPlatform
+    {
+        get { return isOnPlatform;}
+        set { isOnPlatform = value;}
+    }
+        
     // Start is called before the first frame update
     void Start()
     {
@@ -42,15 +55,16 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void Jump(float touchLength)
     {
-        if (touchLength < JUMP_COEFFICIENT)
+        if (isOnPlatform)
         {
-            rigidBody.AddForce(new Vector2(0f, jumpForceUnit));
+            if (touchLength < JUMP_COEFFICIENT)
+            {
+                rigidBody.AddForce(new Vector2(0f, jumpForceUnit));
+            }
+            else
+            {
+                rigidBody.AddForce(new Vector2(0f, jumpForceUnit * touchLength / JUMP_COEFFICIENT));
+            }
         }
-        else
-        {
-            rigidBody.AddForce(new Vector2(0f, jumpForceUnit * touchLength / JUMP_COEFFICIENT));
-        }
-        
-        // block touch until landing
     }
 }
