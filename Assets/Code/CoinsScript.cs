@@ -16,7 +16,7 @@ namespace Assets.Code
         // Start is called before the first frame update
         void Start()
         {
-            player = PlayerInstance.getInstance();
+            
         }
 
         // Update is called once per frame
@@ -27,7 +27,26 @@ namespace Assets.Code
 
         void OnTriggerEnter2D(Collider2D other)
         {
-            player.Coins = player.Coins + BRONZE_COIN;
+            int addition = 0;
+            if (player == null)
+            {
+                player = PlayerInstance.getInstance();
+            }
+
+            switch(this.tag)
+            {
+                case "Bronze":
+                    addition = BRONZE_COIN;
+                    break;
+                case "Silver":
+                    addition = SILVER_COIN;
+                    break;
+                case "Golden":
+                    addition = GOLDEN_COIN;
+                    break;
+            }
+            
+            player.Coins = player.Coins + addition;
             coins.text = player.Coins.ToString();
             this.gameObject.SetActive(false);
         }
