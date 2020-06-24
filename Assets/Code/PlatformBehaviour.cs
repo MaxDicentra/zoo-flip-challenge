@@ -8,6 +8,11 @@ public class PlatformBehaviour : MonoBehaviour
     [SerializeField] BoxCollider2D collider = default;
     [SerializeField] private Rigidbody2D rigidBody = default;
 
+    private enum PlatformPositions
+    {
+        
+    }
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -46,5 +51,15 @@ public class PlatformBehaviour : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other)
     {
         PlayerInstance.getInstance().Score += 1;
+    }
+
+    void MoveFast(Vector2 newPosition)
+    {
+        
+    }
+
+    void MoveSlow(Vector2 newPosition)
+    {
+        
     }
 }

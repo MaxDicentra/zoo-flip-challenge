@@ -9,20 +9,40 @@ namespace Assets.Code
         private const int BRONZE_COIN = 1;
         private const int SILVER_COIN = 5;
         private const int GOLDEN_COIN = 10;
+        private bool isShown = false;
         
         [SerializeField] Text coins = default;
         
-        private PlayerBehaviour player;
+        [SerializeField] PlayerBehaviour player = default;
+
+        public bool IsShown
+        {
+            get => isShown;
+            set => isShown = value;
+        }
+
         // Start is called before the first frame update
         void Start()
         {
-            
+            switch(this.tag)
+            {
+                case "Bronze":
+                    CoinsControll.BronzeCoin = this;
+                    break;
+                case "Silver":
+                    CoinsControll.SilverCoin = this;
+                    break;
+                case "Golden":
+                    CoinsControll.GoldenCoin = this;
+                    break;
+            }
+            this.gameObject.SetActive(false);
         }
 
         // Update is called once per frame
         void Update()
         {
-            
+
         }
 
         void OnTriggerEnter2D(Collider2D other)
