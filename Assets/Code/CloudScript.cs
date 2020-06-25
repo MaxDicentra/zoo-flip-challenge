@@ -2,20 +2,23 @@
 
 namespace Assets.Code
 {
-    public class CloudScript : MonoBehaviour
+    public class CloudScript : MonoBehaviour, IFreezable
     {
         private const float MOVE_FORCE = -3f;
         private const float FINAL_POSITION = -10f;
         private const float START_POSITION = 11.5f;
 
         private Vector2 startPosition;
+        private bool freezed = false;
             
             
-        [SerializeField] private Rigidbody2D rb = default;
+        private Rigidbody2D rb;
         // Start is called before the first frame update
         void Start()
         {
+            rb = GetComponent<Rigidbody2D>();
             startPosition = transform.position;
+            EventsController.AddToFreezableItems(this);
         }
 
         // Update is called once per frame
@@ -29,10 +32,19 @@ namespace Assets.Code
 
         void FixedUpdate()
         {
-            if (rb.velocity == Vector2.zero)
+            if (!freezed)
             {
-                rb.velocity = new Vector2(MOVE_FORCE, 0f);
+                if (rb.velocity == Vector2.zero)
+                {
+                    rb.velocity = new Vector2(MOVE_FORCE, 0f);
+                }
             }
+        }
+
+        public void Freeze()
+        {
+            freezed = true;
+            rb.velocity = Vector2.zero;
         }
     }
 }

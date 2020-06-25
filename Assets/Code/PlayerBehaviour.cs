@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Debug = UnityEngine.Debug;
 
-public class PlayerBehaviour : MonoBehaviour
+public class PlayerBehaviour : MonoBehaviour, IFreezable
 {
     private const float JUMP_COEFFICIENT  = 500;
     
@@ -20,14 +20,17 @@ public class PlayerBehaviour : MonoBehaviour
 
 
     private Touch touch;
-   
+    private Transform myParent;
+    
     private bool isGameStarted = false;
     private bool isOnPlatform = false;
     private bool isOnGround = true;
     private float direction;
-    [SerializeField] int coins = default;
-    private int bestScore;
-    [SerializeField] int score = 0;
+    private int coins = 0;
+    private int bestScore = 0;
+    private int score = 0;
+
+    public Transform MyParent => myParent;
 
     public int Coins
     {
@@ -65,6 +68,8 @@ public class PlayerBehaviour : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         PlayerInstance.setInstance(this);
+        myParent = this.transform.parent;
+        EventsController.AddToFreezableItems(this);
     }
 
     // Update is called once per frame
@@ -87,5 +92,10 @@ public class PlayerBehaviour : MonoBehaviour
                 rigidBody.AddForce(new Vector2(0f, jumpForceUnit * touchLength / JUMP_COEFFICIENT));
             }
         }
+    }
+
+    public void Freeze()
+    {
+        rigidBody.isKinematic = true;
     }
 }
