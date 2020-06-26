@@ -16,6 +16,13 @@ public class SpikesBehaviour : MonoBehaviour
         set => GONotify = value;
     }
 
+    public GameOverHandler FreezeAll
+    {
+        get => GONotify;
+        set => GONotify = value;
+    }
+    
+
     // Start is called before the first frame update
     void Start()
     {
