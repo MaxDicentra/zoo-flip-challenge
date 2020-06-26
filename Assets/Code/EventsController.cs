@@ -47,7 +47,7 @@ namespace Assets.Code
             spikes.GoNotify += restart.Move;
             foreach (var freezable in freezableItems)
             {
-                spikes.FreezeAll += freezable.Freeze;
+                spikes.GoNotify += freezable.Freeze;
             }
         }
     }

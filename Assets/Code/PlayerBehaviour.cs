@@ -74,7 +74,7 @@ public class PlayerBehaviour : MonoBehaviour, IFreezable
 
     // Update is called once per frame
     void Update()
-    {
+    {   
         currentScore.text = score.ToString();
     }
 

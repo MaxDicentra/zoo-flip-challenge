@@ -9,18 +9,8 @@ public class SpikesBehaviour : MonoBehaviour
 
     public delegate void GameOverHandler();
     private event GameOverHandler GONotify;
-    
-    public delegate void FreezeHandler();
-    private event FreezeHandler freezeAll;
-    
 
     public GameOverHandler GoNotify
-    {
-        get => GONotify;
-        set => GONotify = value;
-    }
-    
-    public GameOverHandler FreezeAll
     {
         get => GONotify;
         set => GONotify = value;
@@ -42,7 +32,6 @@ public class SpikesBehaviour : MonoBehaviour
     {
         // freeze everything
         // move final score panel
-        FreezeAll?.Invoke();
         GONotify?.Invoke();
     }
 }

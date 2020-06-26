@@ -38,6 +38,10 @@ public class PlatformBehaviour : MonoBehaviour, IFreezable
     // Update is called once per frame
     void Update()
     {
+        if (!EventsController.FreezableItems.Contains(this))
+        {
+            EventsController.FreezableItems.Add(this);
+        }
         if (!collider.isTrigger && hasPlayerOn)
         {
             if (transform.position.y > JumpPos.y)
