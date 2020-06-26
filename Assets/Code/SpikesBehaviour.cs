@@ -15,6 +15,7 @@ public class SpikesBehaviour : MonoBehaviour
         get => GONotify;
         set => GONotify = value;
     }
+    
     public GameOverHandler FreezeAll
     {
         get => GONotify;
