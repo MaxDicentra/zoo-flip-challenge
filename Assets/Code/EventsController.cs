@@ -5,7 +5,7 @@ namespace Assets.Code
 {
     public class EventsController: MonoBehaviour
     {
-        private static SpikesBehaviour spikes;
+        private static List<SpikesBehaviour> spikes = new List<SpikesBehaviour>();
         private static RestartScript restart;
         private static List<IFreezable> freezableItems = new List<IFreezable>();
 
@@ -16,10 +16,7 @@ namespace Assets.Code
             set => restart = value;
         }
 
-        public static SpikesBehaviour Spikes
-        {
-            set => spikes = value;
-        }
+        public static List<SpikesBehaviour> Spikes => spikes;
 
         public static List<IFreezable> FreezableItems => freezableItems;
 
@@ -42,12 +39,20 @@ namespace Assets.Code
             freezableItems.Add(item);
         }
         
+        public static void AddToSpikes(SpikesBehaviour item)
+        {
+            spikes.Add(item);
+        }
+        
         void SetGameOverEvents()
         {
-            spikes.GoNotify += restart.Move;
-            foreach (var freezable in freezableItems)
+            foreach (var spike in spikes)
             {
-                spikes.FreezeAll += freezable.Freeze;
+                spike.GoNotify += restart.Move;
+                foreach (var freezable in freezableItems)
+                {
+                    spike.FreezeAll += freezable.Freeze;
+                }
             }
         }
     }
