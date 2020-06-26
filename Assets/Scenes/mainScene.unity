@@ -1,15 +1,3 @@
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2756781722015742052, guid: 55f14878a60327049836a1bc24329685,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2756781722015742052, guid: 55f14878a60327049836a1bc24329685,
-        type: 3}
-      propertyPath: m_RootOrder
 @@ -588,6 +588,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
