@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Code
 {
@@ -19,6 +20,11 @@ namespace Assets.Code
         public void Hide()
         {
             this.gameObject.SetActive(false);
+        }
+        
+        public void OnClick()
+        {
+            SceneManager.LoadScene("settings");
         }
     }
 }

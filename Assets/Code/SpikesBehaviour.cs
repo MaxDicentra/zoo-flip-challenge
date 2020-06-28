@@ -15,18 +15,12 @@ public class SpikesBehaviour : MonoBehaviour
         get => GONotify;
         set => GONotify = value;
     }
-    
-    public GameOverHandler FreezeAll
-    {
-        get => GONotify;
-        set => GONotify = value;
-    }
-    
+
 
     // Start is called before the first frame update
     void Start()
     {
-        EventsController.Spikes = this;
+        EventsController.Spikes.Add(this);
     }
 
     // Update is called once per frame

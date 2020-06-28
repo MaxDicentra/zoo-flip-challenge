@@ -37,6 +37,7 @@ namespace Assets
 
         public void Restart()
         {
+            EventsController.Spikes.Clear();
             EventsController.FreezableItems.Clear();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }

@@ -16,8 +16,6 @@ namespace Assets.Code
             if (!isOncePressed) // hide buttons
             {
                 isOncePressed = true;
-                ButtonsInstances.Ranking.Hide();
-                ButtonsInstances.VkButton.Hide();
                 ButtonsInstances.Settings.Hide();
                 ButtonsInstances.MoreCharacters.Hide();
             }

@@ -7,8 +7,6 @@ namespace Assets.Code
         private static SettingsScript settings;
         private static JumpButtonBehaviour jump;
         private static MoreCharactersScript moreCharacters;
-        private static VKButtonScript vkButton;
-        private static RankingScript ranking;
 
         public static SettingsScript Settings
         {
@@ -26,18 +24,6 @@ namespace Assets.Code
         {
             get => moreCharacters;
             set => moreCharacters = value;
-        }
-
-        public static VKButtonScript VkButton
-        {
-            get => vkButton;
-            set => vkButton = value;
-        }
-
-        public static RankingScript Ranking
-        {
-            get => ranking;
-            set => ranking = value;
         }
     }
 }
