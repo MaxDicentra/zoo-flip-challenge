@@ -50,6 +50,8 @@ namespace Assets.Code
                     spike.GoNotify += freezable.Freeze;
                 }
             }
+            restart.gameObject.SetActive(false);
+            BasePanelScript.Instance.gameObject.SetActive(false);
         }
     }
 }

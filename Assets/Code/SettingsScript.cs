@@ -24,7 +24,8 @@ namespace Assets.Code
         
         public void OnClick()
         {
-            SceneManager.LoadScene("settings");
+            BasePanelScript.Instance.gameObject.SetActive(true);
+            SettingsPanelScript.Instance.gameObject.SetActive(true);
         }
     }
 }
