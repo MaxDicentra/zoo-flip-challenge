@@ -32,6 +32,9 @@ namespace Assets
         {
             results.text = "Final score: " + PlayerInstance.getInstance().Score + "\n" + 
                 "Best score: " + PlayerInstance.getInstance().BestScore;
+           
+            PlayerPrefs.SetInt(StringConsts.BEST_SCORE, PlayerInstance.getInstance().BestScore);
+            PlayerPrefs.SetInt(StringConsts.COINS, PlayerInstance.getInstance().Coins);
             rb.velocity = speed;
         }
 

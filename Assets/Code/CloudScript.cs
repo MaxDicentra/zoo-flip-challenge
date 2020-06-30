@@ -4,8 +4,8 @@ namespace Assets.Code
 {
     public class CloudScript : MonoBehaviour, IFreezable
     {
-        private const float MOVE_FORCE = -3f;
-        private const float FINAL_POSITION = -10f;
+        private const float MOVE_FORCE = -1.1f;
+        private const float FINAL_POSITION = -11f;
         private const float START_POSITION = 11.5f;
 
         private Vector2 startPosition;

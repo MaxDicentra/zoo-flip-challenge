@@ -70,6 +70,25 @@ public class PlayerBehaviour : MonoBehaviour, IFreezable
         PlayerInstance.setInstance(this);
         myParent = this.transform.parent;
         EventsController.AddToFreezableItems(this);
+
+        if (PlayerPrefs.HasKey(StringConsts.BEST_SCORE))
+        {
+            BestScore = PlayerPrefs.GetInt(StringConsts.BEST_SCORE);
+        }
+        else
+        {
+            BestScore = 0;
+            PlayerPrefs.SetInt(StringConsts.BEST_SCORE, 0);
+        }
+        if (PlayerPrefs.HasKey(StringConsts.COINS))
+        {
+            Coins = PlayerPrefs.GetInt(StringConsts.COINS);
+        }
+        else
+        {
+            Coins = 0;
+            PlayerPrefs.SetInt(StringConsts.COINS, 0);
+        }
     }
 
     // Update is called once per frame
