@@ -6,46 +6,49 @@ namespace Assets.Code
 {
     public class MusicScript : MonoBehaviour
     {
-        private const float MUSIC_OFF = -80f;
-        private const float MUSIC_ON = -20f;
-        
-        
         [SerializeField] private Sprite musicOnSprite = default;
         [SerializeField] private Sprite musicOffSprite = default;
         [SerializeField] AudioMixer am = default;
         [SerializeField] private Button button = default;
 
-        private static bool isMusicOn = true;
 
         void Start()
         {
-            if (isMusicOn)
+            if (PlayerPrefs.HasKey(StringConsts.VOLUME))
             {
-                button.image.sprite = musicOnSprite;
+                if (PlayerPrefs.GetFloat(StringConsts.VOLUME) == StringConsts.MUSIC_ON)
+                {
+                    button.image.sprite = musicOnSprite;
+                }
+                else
+                {
+                    button.image.sprite = musicOffSprite;
+                    am.SetFloat("VolumeParam", StringConsts.MUSIC_OFF);
+                }
             }
             else
             {
-                button.image.sprite = musicOffSprite;
+                PlayerPrefs.SetFloat(StringConsts.VOLUME, StringConsts.MUSIC_ON);
+                PlayerPrefs.Save();
+                button.image.sprite = musicOnSprite;
             }
         }
         public void OnClick()
         {
             float value;
             am.GetFloat("VolumeParam", out value);
-            if (value == MUSIC_OFF)
+            if (value == StringConsts.MUSIC_OFF)
             {
-                am.SetFloat("VolumeParam", MUSIC_ON);
+                am.SetFloat("VolumeParam", StringConsts.MUSIC_ON);
                 button.image.sprite = musicOnSprite;
-                PlayerPrefs.SetFloat(StringConsts.VOLUME, MUSIC_ON);
-                isMusicOn = true;
+                PlayerPrefs.SetFloat(StringConsts.VOLUME, StringConsts.MUSIC_ON);
                 PlayerPrefs.Save();
             }
             else
             {
-                am.SetFloat("VolumeParam", MUSIC_OFF);
+                am.SetFloat("VolumeParam", StringConsts.MUSIC_OFF);
                 button.image.sprite = musicOffSprite;
-                PlayerPrefs.SetFloat(StringConsts.VOLUME, MUSIC_OFF);
-                isMusicOn = false;
+                PlayerPrefs.SetFloat(StringConsts.VOLUME, StringConsts.MUSIC_OFF);
                 PlayerPrefs.Save();
             }
         }

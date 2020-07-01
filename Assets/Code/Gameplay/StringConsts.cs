@@ -13,5 +13,7 @@
         public const string PURCHASED = "purchased";
         public const string EQUIPED = "equiped";
         public const string START_CHARACTER = "0";
+        public const float MUSIC_OFF = -80f;
+        public const float MUSIC_ON = -20f;
     }
 }

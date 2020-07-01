@@ -65,7 +65,8 @@ public class PlayerBehaviour : MonoBehaviour, IFreezable
     }
 
     void Awake()
-    { 
+    {
+        // PlayerPrefs.DeleteAll();
         CharacterControllerScript.CharactersList.Add(this);
         
         if (PlayerPrefs.HasKey(StringConsts.BEST_SCORE))
