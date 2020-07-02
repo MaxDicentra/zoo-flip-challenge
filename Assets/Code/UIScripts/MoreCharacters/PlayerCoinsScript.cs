@@ -17,9 +17,10 @@ namespace Assets.Code
         void Start()
         {
             instance = this;
+            SetCoins(PlayerInstance.getInstance().Coins);
         }
 
-        public void SetText(int coins)
+        public void SetCoins(int coins)
         {
             text.text = coins.ToString();
         }

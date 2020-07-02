@@ -21,7 +21,7 @@ namespace Assets.Code
 
         public void OnExitButtonClick()
         {
-            BasePanelScript.Instance.gameObject.SetActive(false);
+            this.gameObject.SetActive(false);
             BasePanelScript.Instance.gameObject.SetActive(false);
         }
     }

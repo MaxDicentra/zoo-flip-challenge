@@ -32,6 +32,8 @@ public class PlayerBehaviour : MonoBehaviour, IFreezable
     private static int bestScore = 0;
     private int score = 0;
 
+    public Text CoinsText => coinsText;
+
     public Transform MyParent => myParent;
 
     public int Coins
@@ -66,7 +68,7 @@ public class PlayerBehaviour : MonoBehaviour, IFreezable
 
     void Awake()
     {
-        // PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
         CharacterControllerScript.CharactersList.Add(this);
         
         if (PlayerPrefs.HasKey(StringConsts.BEST_SCORE))

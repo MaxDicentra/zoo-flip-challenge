@@ -11,7 +11,8 @@ namespace Assets.Code
         private bool isPurchased = false;
         private string characterTag;
         private int price;
-        
+
+        [SerializeField] Text totalCoins = default;
         [SerializeField] private Text priceT = default;
         [SerializeField] private Text text = default;
         [SerializeField] Toggle isEquiped = default;
@@ -54,6 +55,8 @@ namespace Assets.Code
             {
                 isEquiped.isOn = true;
                 equipedCharacter.isEquiped.isOn = false;
+                PlayerPrefs.SetString(equipedCharacter.characterTag, StringConsts.PURCHASED);
+                
                 equipedCharacter = this;
                 PlayerPrefs.SetString(characterTag, StringConsts.EQUIPED);
                 PlayerPrefs.SetString(StringConsts.CURRENT_CHARACTER, characterTag);
@@ -70,7 +73,8 @@ namespace Assets.Code
                     coinImage.gameObject.SetActive(false);
                     text.gameObject.SetActive(true);
 
-                    PlayerCoinsScript.Instance.SetText(coins);
+                    PlayerCoinsScript.Instance.SetCoins(coins);
+                    PlayerInstance.getInstance().CoinsText.text = coins.ToString();
                     
                     isPurchased = true;
                     isEquiped.gameObject.SetActive(true);
