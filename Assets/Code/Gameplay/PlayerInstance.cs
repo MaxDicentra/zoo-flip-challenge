@@ -11,12 +11,12 @@ namespace Assets.Code
     {
         private static PlayerBehaviour playerInstance;
 
-        public static PlayerBehaviour getInstance()
+        public static PlayerBehaviour  getInstance()
         {
             return playerInstance;
         }
 
-        public static void setInstance(PlayerBehaviour inst)
+        public static void setInstance(PlayerBehaviour  inst)
         {
             playerInstance = inst;
         }

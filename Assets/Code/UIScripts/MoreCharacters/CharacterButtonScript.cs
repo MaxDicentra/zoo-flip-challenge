@@ -44,12 +44,6 @@ namespace Assets.Code
             }
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
-
         public void OnClick()
         {
             if (isPurchased)

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Assets.Code;
 using Assets.Code.Gameplay;
+using Assets.Code.UIScripts.MoreCharacters;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -16,7 +17,6 @@ namespace Assets
         void Start()
         {
             EventsController.Restart = this;
-            BasePanelScript.Instance.gameObject.SetActive(false);
         }
 
         public void Move()

@@ -8,11 +8,9 @@ namespace Assets.Code.UIScripts.MoreCharacters
 
         public static MCPanelScript Instance => instance;
 
-        // Start is called before the first frame update
-        void Start()
+        void Awake()
         {
             instance = this;
-            this.gameObject.SetActive(false);
         }
 
         public void OnExitClick()

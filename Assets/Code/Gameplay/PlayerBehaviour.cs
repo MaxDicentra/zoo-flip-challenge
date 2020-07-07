@@ -12,20 +12,13 @@ using Debug = UnityEngine.Debug;
 public class PlayerBehaviour : MonoBehaviour, IFreezable
 {
     private const float JUMP_COEFFICIENT  = 500;
-    
-    private Rigidbody2D rigidBody;
-    private Animator animator;
-    
     [SerializeField] float jumpForceUnit = default;
 
-
-    private Touch touch;
+    private Rigidbody2D rigidBody;
+    private Animator animator;
     private Transform myParent;
-    
-    private bool isGameStarted = false;
     private bool isOnPlatform = false;
     private bool isOnGround = true;
-    private float direction;
 
     public Transform MyParent => myParent;
     
@@ -40,33 +33,16 @@ public class PlayerBehaviour : MonoBehaviour, IFreezable
         get => isOnGround;
         set => isOnGround = value;
     }
-
-    void Awake()
-    {
-        CharacterControllerScript.CharactersList.Add(this);
-
-        rigidBody = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
     
-        myParent = this.transform.parent;
-        EventsController.AddToFreezableItems(this);
-        this.gameObject.SetActive(false);
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {   
-        
-    }
-
     public void Jump(float touchLength)
     {
+        if (rigidBody == null)
+        {
+            rigidBody = GetComponent<Rigidbody2D>();
+            animator = GetComponent<Animator>();
+            myParent = this.transform.parent;
+        }
+        
         if (isOnPlatform || isOnGround)
         {
             isOnPlatform = false;
@@ -84,10 +60,5 @@ public class PlayerBehaviour : MonoBehaviour, IFreezable
     public void Freeze()
     {
         rigidBody.isKinematic = true;
-    }
-
-    public void MoveToPosition(Vector2 position)
-    {
-        rigidBody.MovePosition(position);
     }
 }

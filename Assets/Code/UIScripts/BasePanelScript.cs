@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Code.UIScripts.MoreCharacters;
+using UnityEngine;
 
 namespace Assets.Code
 {
@@ -11,10 +12,17 @@ namespace Assets.Code
             get => instance;
         }
 
+        void Awake()
+        {
+            instance = this;
+        }
+        
         // Start is called before the first frame update
         void Start()
         {
-            instance = this;
+            MCPanelScript.Instance.gameObject.SetActive(false);
+            SettingsPanelScript.Instance.gameObject.SetActive(false);
+            instance.gameObject.SetActive(false);
         }
     }
 }

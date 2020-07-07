@@ -26,6 +26,11 @@ namespace Assets.Code
             freezableItems.Add(item);
         }
 
+        public static void RemoveFromFreezable(IFreezable item)
+        {
+            freezableItems.Remove(item);
+        }
+
         public static void GameOver()
         {
             foreach (var freezable in freezableItems) 

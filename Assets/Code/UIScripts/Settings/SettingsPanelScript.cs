@@ -10,15 +10,12 @@ namespace Assets.Code
         {
             get => instance;
         }
-    
 
-        // Start is called before the first frame update
-        void Start()
+        void Awake()
         {
             instance = this;
-            this.gameObject.SetActive(false);
         }
-
+        
         public void OnExitButtonClick()
         {
             this.gameObject.SetActive(false);
