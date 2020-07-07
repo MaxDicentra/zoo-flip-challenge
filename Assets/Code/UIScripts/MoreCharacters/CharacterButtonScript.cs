@@ -1,4 +1,5 @@
 ﻿using System;
+using Assets.Code.Gameplay;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -76,7 +77,8 @@ namespace Assets.Code
                     text.gameObject.SetActive(true);
 
                     PlayerCoinsScript.Instance.SetCoins(coins);
-                    PlayerInstance.getInstance().CoinsText.text = coins.ToString();
+                    
+                    CollectablesController.Instance.CoinsText.text = coins.ToString();
                     
                     isPurchased = true;
                     isEquiped.gameObject.SetActive(true);

@@ -1,4 +1,5 @@
 ﻿using System;
+using Assets.Code.Gameplay;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +10,7 @@ namespace Assets.Code
         private static CoinsScript goldenCoin;
         private static CoinsScript silverCoin;
         private static CoinsScript bronzeCoin;
-
+        
         public static CoinsScript GoldenCoin
         {
             set => goldenCoin = value;
@@ -24,29 +25,24 @@ namespace Assets.Code
         {
             set => bronzeCoin = value;
         }
-
-        void Start()
-        {
-            
-        }
-
+        
         void Update()
         {
-            if (PlayerInstance.getInstance().Score != 0 && !goldenCoin.IsShown && !silverCoin.IsShown && !bronzeCoin.IsShown)
+            if (CollectablesController.Instance.Score != 0 && !goldenCoin.IsShown && !silverCoin.IsShown && !bronzeCoin.IsShown)
             {
-                if (PlayerInstance.getInstance().Score % 10 == 0)
+                if (CollectablesController.Instance.Score % 10 == 0)
                 {
                     goldenCoin.gameObject.SetActive(true);
                     goldenCoin.IsShown = true;
                     return;
                 }
-                if (PlayerInstance.getInstance().Score % 5 == 0)
+                if (CollectablesController.Instance.Score % 5 == 0)
                 {    
                     silverCoin.gameObject.SetActive(true);
                     silverCoin.IsShown = true;
                     return;
                 }
-                if (PlayerInstance.getInstance().Score % 2 == 0)
+                if (CollectablesController.Instance.Score % 2 == 0)
                 {
                     bronzeCoin.gameObject.SetActive(true);
                     bronzeCoin.IsShown = true;

@@ -16,37 +16,37 @@ namespace Assets.Code
         // Start is called before the first frame update
         void Start()
         {
-            if (PlayerPrefs.HasKey(StringConsts.CURRENT_CHARACTER))
+        if (PlayerPrefs.HasKey(StringConsts.CURRENT_CHARACTER))
+        {
+            var characterTag = PlayerPrefs.GetString(StringConsts.CURRENT_CHARACTER);
+            foreach (var character in charactersList)
             {
-                var characterTag = PlayerPrefs.GetString(StringConsts.CURRENT_CHARACTER);
-                foreach (var character in charactersList)
+                if (character.tag == characterTag)
                 {
-                    if (character.tag == characterTag)
-                    {
-                        character.gameObject.SetActive(true);
-                        character.MoveToPosition(startPosition);
-                        PlayerInstance.setInstance(character);
-                        currentCharacter = characterTag;
-                        break;
-                    }
+                    character.gameObject.SetActive(true);
+                    character.MoveToPosition(startPosition);
+                    PlayerInstance.setInstance(character);
+                    currentCharacter = characterTag;
+                    break;
                 }
             }
-            else
+        }
+        else
+        {
+            PlayerPrefs.SetString(StringConsts.START_CHARACTER, StringConsts.EQUIPED);
+            PlayerPrefs.SetString(StringConsts.CURRENT_CHARACTER, StringConsts.START_CHARACTER);
+            foreach (var character in charactersList)
             {
-                PlayerPrefs.SetString(StringConsts.START_CHARACTER, StringConsts.EQUIPED);
-                PlayerPrefs.SetString(StringConsts.CURRENT_CHARACTER, StringConsts.START_CHARACTER);
-                foreach (var character in charactersList)
+                if (character.tag == StringConsts.START_CHARACTER)
                 {
-                    if (character.tag == StringConsts.START_CHARACTER)
-                    {
-                        character.gameObject.SetActive(true);
-                        character.MoveToPosition(startPosition);
-                        PlayerInstance.setInstance(character);
-                        currentCharacter = StringConsts.START_CHARACTER;
-                    }
+                    character.gameObject.SetActive(true);
+                    character.MoveToPosition(startPosition);
+                    PlayerInstance.setInstance(character);
+                    currentCharacter = StringConsts.START_CHARACTER;
                 }
             }
-            PlayerPrefs.Save();
+        }
+        PlayerPrefs.Save();
         }
 
         public static void ChangeCharacter(string newCharacter)

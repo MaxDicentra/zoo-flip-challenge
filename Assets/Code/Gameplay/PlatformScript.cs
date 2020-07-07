@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Assets.Code.Gameplay;
 using UnityEngine;
 using Random = System.Random;
 
@@ -85,7 +86,8 @@ namespace Assets.Code
                 PlayerInstance.getInstance().transform.SetParent(this.transform);
                 PlayerInstance.getInstance().IsOnPlatform = true;
                 PlayerInstance.getInstance().IsOnGround = false;
-                PlayerInstance.getInstance().Score += 1;
+                
+                CollectablesController.Instance.Score += 1;
                 
                 hasPlayerOn = true;
                 isOnPosition = false;

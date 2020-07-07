@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Assets.Code;
+using Assets.Code.Gameplay;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -23,13 +24,13 @@ namespace Assets
             BasePanelScript.Instance.gameObject.SetActive(true);
             this.gameObject.SetActive(true);
 
-            if (PlayerInstance.getInstance().Score > PlayerPrefs.GetInt(StringConsts.BEST_SCORE))
+            if (CollectablesController.Instance.Score > PlayerPrefs.GetInt(StringConsts.BEST_SCORE))
             {
-                PlayerPrefs.SetInt(StringConsts.BEST_SCORE, PlayerInstance.getInstance().Score);
+                PlayerPrefs.SetInt(StringConsts.BEST_SCORE, CollectablesController.Instance.Score);
             }
             PlayerPrefs.Save();
             
-            results.text = "Final score: " + PlayerInstance.getInstance().Score + "\n" +
+            results.text = "Final score: " + CollectablesController.Instance.Score + "\n" +
                            "Best score: " + PlayerPrefs.GetInt(StringConsts.BEST_SCORE);
         }
 
