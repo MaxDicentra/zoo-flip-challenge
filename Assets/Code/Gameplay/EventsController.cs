@@ -5,8 +5,7 @@ namespace Assets.Code
 {
     public class EventsController: MonoBehaviour
     {
-        [SerializeField] private static RestartScript restart;
-        // [SerializeField] private bool isNotNull = false;
+        private static RestartScript restart;
         private static List<IFreezable> freezableItems = new List<IFreezable>();
 
         public static RestartScript Restart

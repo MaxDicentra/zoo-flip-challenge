@@ -13,8 +13,7 @@ namespace Assets
         [SerializeField] private Text results = default;
         
 
-        // Start is called before the first frame update
-        void Start()
+        void Awake()
         {
             EventsController.Restart = this;
         }
@@ -38,11 +37,7 @@ namespace Assets
         {
             EventsController.FreezableItems = new List<IFreezable>();
             PlatformsController.Platforms = new List<PlatformScript>();
-            
-            // delete
-            CharacterControllerScript.CharactersList.Clear();
-            
-            
+
             PlayerPrefs.Save();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }

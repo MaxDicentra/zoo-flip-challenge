@@ -7,18 +7,16 @@ namespace Assets.Code
     {
         [SerializeField] private GameObject character_0 = default;
         [SerializeField] private GameObject character_1 = default;
+        [SerializeField] private GameObject character_2 = default;
         
         private static List<GameObject> charactersList = new List<GameObject>();
         private static Vector2 startPosition = new Vector2(0f, -3.2f);
-        private static string currentCharacter;
-        
-
-        public static List<GameObject> CharactersList => charactersList;
 
         void Awake()
         {
             charactersList.Add(character_0);
             charactersList.Add(character_1);
+            charactersList.Add(character_2);
         }
         
 
@@ -35,7 +33,6 @@ namespace Assets.Code
                         GameObject newCharacter = Instantiate(character, startPosition, Quaternion.identity);
                         PlayerInstance.setInstance(newCharacter.GetComponent<PlayerBehaviour>());
                         EventsController.AddToFreezableItems(newCharacter.GetComponent<PlayerBehaviour>());
-                        currentCharacter = characterTag;
                         break;
                     }
                 }
@@ -52,7 +49,6 @@ namespace Assets.Code
                         GameObject newCharacter = Instantiate(character, startPosition, Quaternion.identity);
                         PlayerInstance.setInstance(newCharacter.GetComponent<PlayerBehaviour>());
                         EventsController.AddToFreezableItems(newCharacter.GetComponent<PlayerBehaviour>());
-                        currentCharacter = StringConsts.START_CHARACTER;
                     }
                 }
             }
@@ -71,7 +67,6 @@ namespace Assets.Code
                     GameObject newCharacter = Instantiate(character, startPosition, Quaternion.identity);
                     PlayerInstance.setInstance(newCharacter.GetComponent<PlayerBehaviour>());
                     EventsController.AddToFreezableItems(newCharacter.GetComponent<PlayerBehaviour>());
-                    currentCharacter = character.tag;
                     break;
                 }
             }
