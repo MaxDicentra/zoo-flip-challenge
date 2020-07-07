@@ -20,6 +20,5 @@ namespace Assets.Code
         {
             playerInstance = inst;
         }
-        
     }
 }

@@ -4813,6 +4813,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character_0: {fileID: 4519832903387151964, guid: c996223052b24c848b1f5b238dd09b58,
     type: 3}
+  character_1: {fileID: 168735995275899204, guid: 1c39904e06580c44dbcbdf373c66af28,
+    type: 3}
 --- !u!1 &2078608605
 GameObject:
   m_ObjectHideFlags: 0

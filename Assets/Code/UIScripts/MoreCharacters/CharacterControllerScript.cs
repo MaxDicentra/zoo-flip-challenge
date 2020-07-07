@@ -60,16 +60,13 @@ namespace Assets.Code
         }
 
         public static void ChangeCharacter(string newCharacterTag)
-        {
+        {                 
+            EventsController.RemoveFromFreezable(PlayerInstance.getInstance());
+            Destroy(PlayerInstance.getInstance().gameObject);
+            
             foreach (var character in charactersList)
             {
-                if (character.tag == currentCharacter)
-                {                    
-                    EventsController.RemoveFromFreezable(character.GetComponent<PlayerBehaviour>());
-                    Destroy(character);
-                    continue;
-                }
-                if (character.tag == newCharacterTag)
+                if(character.tag == newCharacterTag)
                 {
                     GameObject newCharacter = Instantiate(character, startPosition, Quaternion.identity);
                     PlayerInstance.setInstance(newCharacter.GetComponent<PlayerBehaviour>());

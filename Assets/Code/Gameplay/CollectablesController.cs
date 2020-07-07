@@ -40,6 +40,7 @@ namespace Assets.Code.Gameplay
         
         void Start()
         {
+            PlayerPrefs.SetInt(StringConsts.COINS, 100);
             BestScoreText.text = PlayerPrefs.GetInt(StringConsts.BEST_SCORE).ToString();
             coinsText.text = PlayerPrefs.GetInt(StringConsts.COINS).ToString();
         }
