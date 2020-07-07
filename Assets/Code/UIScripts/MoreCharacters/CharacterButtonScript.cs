@@ -60,6 +60,8 @@ namespace Assets.Code
                 equipedCharacter = this;
                 PlayerPrefs.SetString(characterTag, StringConsts.EQUIPED);
                 PlayerPrefs.SetString(StringConsts.CURRENT_CHARACTER, characterTag);
+                CharacterControllerScript.ChangeCharacter(characterTag);
+
             }
             else
             {
@@ -79,12 +81,18 @@ namespace Assets.Code
                     isPurchased = true;
                     isEquiped.gameObject.SetActive(true);
                     isEquiped.isOn = true;
+                    
                     equipedCharacter.isEquiped.isOn = false;
                     PlayerPrefs.SetString(equipedCharacter.characterTag, StringConsts.PURCHASED);
                     equipedCharacter = this;
+                    
                     PlayerPrefs.SetString(characterTag, StringConsts.EQUIPED);
                     PlayerPrefs.SetString(StringConsts.CURRENT_CHARACTER, characterTag);
                     CharacterControllerScript.ChangeCharacter(characterTag);
+                }
+                else
+                {
+                    // show panel not enough coins
                 }
             }
             PlayerPrefs.Save();

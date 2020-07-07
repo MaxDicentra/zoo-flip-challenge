@@ -17,7 +17,7 @@ namespace Assets.Code
         void Start()
         {
             instance = this;
-            SetCoins(PlayerInstance.getInstance().Coins);
+            SetCoins(PlayerPrefs.GetInt(StringConsts.COINS));
         }
 
         public void SetCoins(int coins)

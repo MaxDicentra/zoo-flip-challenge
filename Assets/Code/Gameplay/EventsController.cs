@@ -5,53 +5,38 @@ namespace Assets.Code
 {
     public class EventsController: MonoBehaviour
     {
-        private static List<SpikesBehaviour> spikes = new List<SpikesBehaviour>();
-        private static RestartScript restart;
+        [SerializeField] private static RestartScript restart;
+        // [SerializeField] private bool isNotNull = false;
         private static List<IFreezable> freezableItems = new List<IFreezable>();
-
-        private bool isAllSet = false;
 
         public static RestartScript Restart
         {
             set => restart = value;
+            get => restart;
         }
 
-        public static List<SpikesBehaviour> Spikes => spikes;
-
-        public static List<IFreezable> FreezableItems => freezableItems;
-
-        void Start()
+        public static List<IFreezable> FreezableItems
         {
-            
-        }
-
-        void Update()
-        {
-            if (!isAllSet)
-            {
-                isAllSet = true;
-                SetGameOverEvents();
-            }
+            get => freezableItems;
+            set => freezableItems = value;
         }
 
         public static void AddToFreezableItems(IFreezable item)
         {
             freezableItems.Add(item);
         }
-        
-        void SetGameOverEvents()
-        {
-            foreach (var spike in spikes)
-            {
-                spike.GoNotify += restart.Move;
 
-                foreach (var freezable in freezableItems)
-                {
-                    spike.GoNotify += freezable.Freeze;
-                }
+        public static void GameOver()
+        {
+            foreach (var freezable in freezableItems) 
+            { 
+                freezable.Freeze();
             }
-            restart.gameObject.SetActive(false);
-            BasePanelScript.Instance.gameObject.SetActive(false);
+            
+            BasePanelScript.Instance.gameObject.SetActive(true);
+            restart.gameObject.SetActive(true);
+
+            restart.Move();
         }
     }
 }

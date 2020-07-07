@@ -6,21 +6,10 @@ using UnityEngine;
 
 public class SpikesBehaviour : MonoBehaviour
 {
-
-    public delegate void GameOverHandler();
-    private event GameOverHandler GONotify;
-
-    public GameOverHandler GoNotify
-    {
-        get => GONotify;
-        set => GONotify = value;
-    }
-
-
     // Start is called before the first frame update
     void Start()
     {
-        EventsController.Spikes.Add(this);
+        
     }
 
     // Update is called once per frame
@@ -33,6 +22,6 @@ public class SpikesBehaviour : MonoBehaviour
     {
         // freeze everything
         // move final score panel
-        GONotify?.Invoke();
+        EventsController.GameOver();
     }
 }

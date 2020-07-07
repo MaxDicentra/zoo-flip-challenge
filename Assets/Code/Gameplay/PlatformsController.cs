@@ -1,34 +1,40 @@
-﻿using Assets.Code;
+﻿using System.Collections.Generic;
+using Assets.Code;
 using UnityEngine;
 
 namespace Assets
 {
     public class PlatformsController: MonoBehaviour
     {
-        private static PlatformScript pl1;
-        private static PlatformScript pl2;
+        private static List<PlatformScript> platforms = new List<PlatformScript>();
 
+        public static List<PlatformScript> Platforms
+        {
+            get => platforms;
+            set => platforms = value;
+        }
+
+        void Awake()
+        {
+            platforms = new List<PlatformScript>();
+        }
+        
         public static void AddPlatform(PlatformScript pl)
         {
-            if (pl1 == null)
-            {
-                pl1 = pl;
-                return;
-            }
-
-            if (pl2 == null)
-            {
-                pl2 = pl;
-            }
+            platforms.Add(pl);
         }
 
         public static PlatformScript GetOtherPlatform(PlatformScript caller)
         {
-            if (caller != pl1)
+            foreach (var platform in platforms)
             {
-                return pl1;
+                if (platform != caller)
+                {
+                    return platform;
+                }
             }
-            return pl2;
+
+            return null;
         }
     }
 }

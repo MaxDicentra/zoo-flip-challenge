@@ -28,25 +28,11 @@ public class PlayerBehaviour : MonoBehaviour, IFreezable
     private bool isOnPlatform = false;
     private bool isOnGround = true;
     private float direction;
-    private static int coins = 100;
-    private static int bestScore = 0;
     private int score = 0;
 
     public Text CoinsText => coinsText;
 
     public Transform MyParent => myParent;
-
-    public int Coins
-    {
-        get { return coins; }
-        set { coins = value; }
-    }
-
-    public int BestScore
-    {
-        get => bestScore;
-        set => bestScore = value;
-    }
 
     public int Score
     {
@@ -71,23 +57,13 @@ public class PlayerBehaviour : MonoBehaviour, IFreezable
         //PlayerPrefs.DeleteAll();
         CharacterControllerScript.CharactersList.Add(this);
         
-        if (PlayerPrefs.HasKey(StringConsts.BEST_SCORE))
+        if (!PlayerPrefs.HasKey(StringConsts.BEST_SCORE))
         {
-            BestScore = PlayerPrefs.GetInt(StringConsts.BEST_SCORE);
-        }
-        else
-        {
-            BestScore = 0;
             PlayerPrefs.SetInt(StringConsts.BEST_SCORE, 0);
         }
-        if (PlayerPrefs.HasKey(StringConsts.COINS))
+        if (!PlayerPrefs.HasKey(StringConsts.COINS))
         {
-            PlayerPrefs.SetInt(StringConsts.COINS, coins);
-            Coins = PlayerPrefs.GetInt(StringConsts.COINS);
-        }
-        else
-        {
-            PlayerPrefs.SetInt(StringConsts.COINS, coins);
+            PlayerPrefs.SetInt(StringConsts.COINS, 0);
         }
         PlayerPrefs.Save();
         
@@ -102,8 +78,9 @@ public class PlayerBehaviour : MonoBehaviour, IFreezable
     // Start is called before the first frame update
     void Start()
     {
-        coinsText.text = coins.ToString();
-        BestScoreText.text = bestScore.ToString();
+        coinsText.text = PlayerPrefs.GetInt(StringConsts.COINS).ToString();
+
+        BestScoreText.text = PlayerPrefs.GetInt(StringConsts.BEST_SCORE).ToString();
     }
 
     // Update is called once per frame

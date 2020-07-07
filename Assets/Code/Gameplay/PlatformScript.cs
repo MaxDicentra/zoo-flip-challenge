@@ -36,6 +36,7 @@ namespace Assets.Code
             rand = new Random();
             rigidBody = GetComponent<Rigidbody2D>();
             collider = GetComponent<BoxCollider2D>();
+            
             PlatformsController.AddPlatform(this);
             EventsController.AddToFreezableItems(this);
         }
@@ -43,11 +44,6 @@ namespace Assets.Code
         // Update is called once per frame
         void Update()
         {
-            if (!EventsController.FreezableItems.Contains(this))
-            {
-                EventsController.FreezableItems.Add(this);
-            }
-            
             if (transform.position.y < NextPos.y + halfInterval && transform.position.y > NextPos.y - halfInterval &&
                 !hasPlayerOn && !isOnPosition)
             {

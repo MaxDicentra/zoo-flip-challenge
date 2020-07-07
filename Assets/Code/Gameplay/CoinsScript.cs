@@ -46,7 +46,6 @@ namespace Assets.Code
         void OnTriggerEnter2D(Collider2D other)
         {
             int addition = 0;
-            PlayerBehaviour player = PlayerInstance.getInstance();
 
             switch(this.tag)
             {
@@ -61,8 +60,9 @@ namespace Assets.Code
                     break;
             }
             
-            player.Coins = player.Coins + addition;
-            coins.text = player.Coins.ToString();
+            PlayerPrefs.SetInt(StringConsts.COINS, PlayerPrefs.GetInt(StringConsts.COINS) + addition);
+            PlayerPrefs.Save();
+            coins.text = PlayerPrefs.GetInt(StringConsts.COINS).ToString();
             this.gameObject.SetActive(false);
         }
     }

@@ -57,15 +57,13 @@ namespace Assets.Code
                 {
                     character.MoveToPosition(hidePosition);
                     character.gameObject.SetActive(false);
-                    character.MoveToPosition(hidePosition);
                     continue;
                 }
                 if (character.tag == newCharacter)
                 {
-                    character.MoveToPosition(startPosition);
                     character.gameObject.SetActive(true);
-                    character.Coins = PlayerPrefs.GetInt(StringConsts.COINS);
-                    character.BestScore = PlayerPrefs.GetInt(StringConsts.BEST_SCORE);
+                    character.MoveToPosition(startPosition);
+                    currentCharacter = character.tag;
                     PlayerInstance.setInstance(character);
                 }
             }
