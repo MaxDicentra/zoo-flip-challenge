@@ -28,7 +28,8 @@ namespace Assets.Code
         
         void Update()
         {
-            if (CollectablesController.Instance.Score != 0 && !goldenCoin.IsShown && !silverCoin.IsShown && !bronzeCoin.IsShown)
+            if (CollectablesController.Instance.Score != 0 && PlatformsController.CurrentPlatform.IsOnJumpPos &&
+                !goldenCoin.IsShown && !silverCoin.IsShown && !bronzeCoin.IsShown)
             {
                 if (CollectablesController.Instance.Score % 10 == 0)
                 {

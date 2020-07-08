@@ -8,7 +8,14 @@ namespace Assets
     public class PlatformsController: MonoBehaviour
     {
         private static List<PlatformScript> platforms = new List<PlatformScript>();
-        
+        private static PlatformScript currentPlatform;
+
+        public static PlatformScript CurrentPlatform
+        {
+            get => currentPlatform;
+            set => currentPlatform = value;
+        }
+
         public static List<PlatformScript> Platforms
         {
             get => platforms;

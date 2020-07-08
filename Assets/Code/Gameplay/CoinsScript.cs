@@ -45,25 +45,28 @@ namespace Assets.Code
 
         void OnTriggerEnter2D(Collider2D other)
         {
-            int addition = 0;
-
-            switch(this.tag)
+            if (other.gameObject.tag != PlatformsController.CurrentPlatform.tag)
             {
-                case "Bronze":
-                    addition = BRONZE_COIN;
-                    break;
-                case "Silver":
-                    addition = SILVER_COIN;
-                    break;
-                case "Golden":
-                    addition = GOLDEN_COIN;
-                    break;
-            }
+                int addition = 0;
+
+                switch(this.tag)
+                {
+                    case "Bronze":
+                        addition = BRONZE_COIN;
+                        break;
+                    case "Silver":
+                        addition = SILVER_COIN;
+                        break;
+                    case "Golden":
+                        addition = GOLDEN_COIN;
+                        break;
+                }
             
-            PlayerPrefs.SetInt(StringConsts.COINS, PlayerPrefs.GetInt(StringConsts.COINS) + addition);
-            PlayerPrefs.Save();
-            coins.text = PlayerPrefs.GetInt(StringConsts.COINS).ToString();
-            this.gameObject.SetActive(false);
+                PlayerPrefs.SetInt(StringConsts.COINS, PlayerPrefs.GetInt(StringConsts.COINS) + addition);
+                PlayerPrefs.Save();
+                coins.text = PlayerPrefs.GetInt(StringConsts.COINS).ToString();
+                this.gameObject.SetActive(false);
+            }
         }
     }
 }

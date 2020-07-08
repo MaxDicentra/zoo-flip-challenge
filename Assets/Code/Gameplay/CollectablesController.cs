@@ -27,7 +27,7 @@ namespace Assets.Code.Gameplay
             //PlayerPrefs.DeleteAll();
             if (!PlayerPrefs.HasKey(StringConsts.COINS))
             {
-                PlayerPrefs.SetInt(StringConsts.COINS, 0);
+                PlayerPrefs.SetInt(StringConsts.COINS, 200);
             }
             if (!PlayerPrefs.HasKey(StringConsts.BEST_SCORE))
             {
@@ -40,7 +40,6 @@ namespace Assets.Code.Gameplay
         
         void Start()
         {
-            PlayerPrefs.SetInt(StringConsts.COINS, 100);
             BestScoreText.text = PlayerPrefs.GetInt(StringConsts.BEST_SCORE).ToString();
             coinsText.text = PlayerPrefs.GetInt(StringConsts.COINS).ToString();
         }
