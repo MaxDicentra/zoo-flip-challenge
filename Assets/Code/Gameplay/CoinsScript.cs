@@ -64,6 +64,7 @@ namespace Assets.Code
             
                 PlayerPrefs.SetInt(StringConsts.COINS, PlayerPrefs.GetInt(StringConsts.COINS) + addition);
                 PlayerPrefs.Save();
+                isShown = false;
                 coins.text = PlayerPrefs.GetInt(StringConsts.COINS).ToString();
                 this.gameObject.SetActive(false);
             }

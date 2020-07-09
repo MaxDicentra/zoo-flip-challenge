@@ -4299,9 +4299,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0427\u0435\u043C \u0434\u043E\u043B\u044C\u0448\u0435 \u0434\u0435\u0440\u0436\u0438\u0448\u044C
-    \u043F\u0430\u043B\u0435\u0446,\n \u0442\u0435\u043C \u0434\u043E\u043B\u044C\u0448\u0435
-    \u043F\u0440\u044B\u0436\u043E\u043A."
+  m_Text: "The longer you hold your finger\r\n the higher the jump."
 --- !u!222 &1700540748
 CanvasRenderer:
   m_ObjectHideFlags: 0
