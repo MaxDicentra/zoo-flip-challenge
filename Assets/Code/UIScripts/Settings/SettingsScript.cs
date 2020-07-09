@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 namespace Assets.Code
 {
-    public class SettingsScript : MonoBehaviour
+    public class SettingsScript : MonoBehaviour //,  IPointerDownHandler, IPointerUpHandler
     {
         // Start is called before the first frame update
         void Start()
@@ -27,5 +28,15 @@ namespace Assets.Code
             BasePanelScript.Instance.gameObject.SetActive(true);
             SettingsPanelScript.Instance.gameObject.SetActive(true);
         }
+
+        // public void OnPointerDown(PointerEventData eventData)
+        // {
+        //     throw new System.NotImplementedException();
+        // }
+        //
+        // public void OnPointerUp(PointerEventData eventData)
+        // {
+        //     throw new System.NotImplementedException();
+        // }
     }
 }

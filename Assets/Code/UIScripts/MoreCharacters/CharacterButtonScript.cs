@@ -86,10 +86,6 @@ namespace Assets.Code
                     PlayerPrefs.SetString(StringConsts.CURRENT_CHARACTER, characterTag);
                     CharacterControllerScript.ChangeCharacter(characterTag);
                 }
-                else
-                {
-                    // show panel not enough coins
-                }
             }
             PlayerPrefs.Save();
         }

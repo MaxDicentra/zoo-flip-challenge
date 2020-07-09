@@ -2075,6 +2075,51 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4213007569850378315}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &866410456
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 866410457}
+  - component: {fileID: 866410458}
+  m_Layer: 0
+  m_Name: InputController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &866410457
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866410456}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -22.67, y: 0.65, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1481584939}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &866410458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866410456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5346e56449ef57f47972af0935fa93c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 1118882130}
+  rulesPanel: {fileID: 1223448056}
 --- !u!1001 &880175537
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2221,7 +2266,7 @@ PrefabInstance:
     - target: {fileID: 4234629722365348375, guid: 53eac35035efd26448eaa650d7186668,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 2.5
+      value: 2.499939
       objectReference: {fileID: 0}
     - target: {fileID: 4234629722365348375, guid: 53eac35035efd26448eaa650d7186668,
         type: 3}
@@ -2582,7 +2627,7 @@ PrefabInstance:
     - target: {fileID: 4234629722365348375, guid: 53eac35035efd26448eaa650d7186668,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 2.6398926
+      value: 2.6398315
       objectReference: {fileID: 0}
     - target: {fileID: 4234629722365348375, guid: 53eac35035efd26448eaa650d7186668,
         type: 3}
@@ -4057,6 +4102,7 @@ Transform:
   - {fileID: 2136516358}
   - {fileID: 2070572057}
   - {fileID: 1481856394}
+  - {fileID: 866410457}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4985,6 +5031,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 008b8fffead92c942a836488e9e1dde0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  am: {fileID: 24100000, guid: 04a72b00096d8384eaccff8b14577606, type: 2}
 --- !u!1001 &1831091501358810317
 PrefabInstance:
   m_ObjectHideFlags: 0

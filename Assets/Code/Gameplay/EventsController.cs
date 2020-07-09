@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 namespace Assets.Code
 {
     public class EventsController: MonoBehaviour
     {
+        [SerializeField] AudioMixer am = default;
         private static RestartScript restart;
         private static List<IFreezable> freezableItems = new List<IFreezable>();
 
@@ -30,6 +32,19 @@ namespace Assets.Code
             freezableItems.Remove(item);
         }
 
+        void Start()
+        {
+            if (PlayerPrefs.HasKey(StringConsts.VOLUME))
+            {
+                am.SetFloat("VolumeParam", PlayerPrefs.GetFloat(StringConsts.VOLUME));
+            }
+            else
+            {
+                PlayerPrefs.SetFloat(StringConsts.VOLUME, StringConsts.MUSIC_ON);
+                PlayerPrefs.Save();
+            }
+        }
+        
         public static void GameOver()
         {
             foreach (var freezable in freezableItems) 
