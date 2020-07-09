@@ -7,12 +7,14 @@ namespace Assets.Code
 {
     public class JumpButtonBehaviour : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
+        [SerializeField] GameObject rulesPanel = default;
         private Stopwatch touchLength = new Stopwatch();
         private bool isOncePressed = false;
         private Random rand;
 
         void Start()
         {
+            rulesPanel.SetActive(false);
             rand = new Random();
         }
         
@@ -25,6 +27,7 @@ namespace Assets.Code
                 isOncePressed = true;
                 ButtonsInstances.Settings.Hide();
                 ButtonsInstances.MoreCharacters.Hide();
+                rulesPanel.SetActive(true);
             }
         }
 
@@ -43,6 +46,7 @@ namespace Assets.Code
                     PlatformsController.CurrentPlatform.IsOnJumpPos = false;
                     PlatformsController.CurrentPlatform.Collider.isTrigger = true;
                 }
+                rulesPanel.SetActive(false);
             }
             touchLength.Stop();
             PlayerInstance.getInstance().Jump(touchLength.ElapsedMilliseconds);
