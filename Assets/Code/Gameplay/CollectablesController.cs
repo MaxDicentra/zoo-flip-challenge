@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Assets.Code.Gameplay
@@ -16,10 +17,17 @@ namespace Assets.Code.Gameplay
 
         public static CollectablesController Instance => instance;
 
-        public int Score
+        public int Score => score;
+
+
+        private void OnEnable()
         {
-            get => score;
-            set => score = value;
+            PlatformScript.ScoreIncr += SetScore;
+        }
+
+        public void OnDisable()
+        {
+            PlatformScript.ScoreIncr -= SetScore;
         }
 
         void Awake()
@@ -46,8 +54,13 @@ namespace Assets.Code.Gameplay
         
         void Update()
         {
-            currentScore.text = score.ToString();
+        //    currentScore.text = score.ToString();
         }
 
+        void SetScore()
+        {
+            score++;
+            currentScore.text = score.ToString();
+        }
     }
 }

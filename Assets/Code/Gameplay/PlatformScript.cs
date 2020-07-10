@@ -6,8 +6,9 @@ namespace Assets.Code
 {
     public class PlatformScript : MonoBehaviour, IFreezable
     {
+        public static System.Action ScoreIncr = delegate {  };
+        
         private static bool isGameStarted = false;
-
         private List<Vector2> positions = new List<Vector2>(new []{new Vector2(0f,1f), 
             new Vector2(0f,2f),
             new Vector2(0f,3f)});
@@ -93,8 +94,9 @@ namespace Assets.Code
                 // PlayerInstance.getInstance().IsOnPlatform = true;
                 // PlayerInstance.getInstance().IsOnGround = false;
                 
-                CollectablesController.Instance.Score += 1;
-                
+               // CollectablesController.Instance.Score += 1;
+               ScoreIncr?.Invoke();
+               
                 hasPlayerOn = true;
                 isOnPosition = false;
                 isGameStarted = true;
