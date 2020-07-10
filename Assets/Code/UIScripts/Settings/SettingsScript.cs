@@ -23,7 +23,8 @@ namespace Assets.Code
             this.gameObject.SetActive(false);
         }
         
-        public void OnClick()
+
+        public void SettingButtonOnClik()
         {
             BasePanelScript.Instance.gameObject.SetActive(true);
             SettingsPanelScript.Instance.gameObject.SetActive(true);

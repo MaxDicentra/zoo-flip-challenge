@@ -1,19 +1,17 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Random = System.Random;
 
 namespace Assets.Code.Gameplay
 {
     public class InputController : MonoBehaviour
     {
-        [SerializeField] private Camera camera = default;
         [SerializeField] GameObject rulesPanel = default;
         private Stopwatch touchLength = new Stopwatch();
         private bool isOncePressed = false;
         private Random rand;
-
-        private RaycastHit2D hit;
-        private Ray2D ray;
 
         // Start is called before the first frame update
         void Start()
@@ -25,13 +23,12 @@ namespace Assets.Code.Gameplay
         // Update is called once per frame
         void Update()
         {
-            hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-            if (hit.transform != ButtonsInstances.Settings && hit.transform != ButtonsInstances.MoreCharacters)
+            if (!IsPointerOverUIObject())
             {
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0) )
                 {
                     touchLength.Start();
-
+                    PlayerInstance.getInstance().Animator1.SetBool("jump", true);
                     if (!isOncePressed) // hide buttons
                     {
                         isOncePressed = true;
@@ -40,7 +37,7 @@ namespace Assets.Code.Gameplay
                         rulesPanel.SetActive(true);
                     }
                 }
-
+            
                 if (Input.GetMouseButtonUp(0))
                 {
                     if (PlayerInstance.getInstance().IsOnPlatform)
@@ -56,6 +53,7 @@ namespace Assets.Code.Gameplay
                             PlatformsController.CurrentPlatform.IsOnJumpPos = false;
                             PlatformsController.CurrentPlatform.Collider.isTrigger = true;
                         }
+                        
                         rulesPanel.SetActive(false);
                     }
                     touchLength.Stop();
@@ -67,6 +65,16 @@ namespace Assets.Code.Gameplay
                     }
                 }
             }
+        }
+        
+        //метод для проверки нахождения курсора над UI-элеметами
+        bool IsPointerOverUIObject()
+        {
+            PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+            eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+            List<RaycastResult> results = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+            return results.Count > 0;
         }
     }
 }

@@ -88,9 +88,10 @@ namespace Assets.Code
         {
             if (PlayerInstance.getInstance().transform.position.y > transform.position.y && !hasPlayerOn)
             {
-                PlayerInstance.getInstance().transform.SetParent(this.transform);
-                PlayerInstance.getInstance().IsOnPlatform = true;
-                PlayerInstance.getInstance().IsOnGround = false;
+                PlayerInstance.getInstance().Grounded(transform);
+                // PlayerInstance.getInstance().transform.SetParent(this.transform);
+                // PlayerInstance.getInstance().IsOnPlatform = true;
+                // PlayerInstance.getInstance().IsOnGround = false;
                 
                 CollectablesController.Instance.Score += 1;
                 
